@@ -178,13 +178,44 @@
      })
 
      try{
-      console.log('entering try');  
-        x = 5;
-      console.log(a)
+      console.log('entering try for step 3');  
+        let age = 5;
+        console.log("Age: " + age)
+        if(age<21){
+          throw new SyntaxError("Age must be greater than 21");
+        }
      } catch(err){
-        console.log('error was caught')
+        console.log('error was caught: ' + err)
+     }finally{
+       console.log('finally')
      }
 
+     class SillyError extends Error{
+        constructor(message){
+          super(message);
+          this.name = "SillyError"
+        }
+     }
+
+     function checkAge(){
+       let age = 2;
+       if(age<21){
+         throw new SillyError("Age is invalid")
+       }
+       return age;
+     }
+
+     try{
+        console.log('entering try for step 4');  
+        let age = checkAge();
+        if(err instanceof SillyError){
+          console.log("You made a silly error: " + err.message)
+        }
+     }catch(err){
+        console.log('error was caught: ' + err)
+     }finally{
+       console.log('finally')
+     }
   </script>
 </body>
 
