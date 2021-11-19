@@ -102,7 +102,9 @@
       e.preventDefault();
       let output = document.querySelector('output');
       let firstNum = document.querySelector('#first-num').value;
+      checkNumber(firstNum);
       let secondNum = document.querySelector('#second-num').value;
+      checkNumber(secondNum);
       let operator = document.querySelector('#operator').value;
       output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
     });
@@ -206,17 +208,20 @@
         }
      }
 
-     function checkAge(){
-       let age = 2;
-       if(age<21){
-         throw new SillyError("Age is invalid")
+     function checkNumber(num){
+       let number = num;
+       if(!Number(number)){
+         throw new SillyError("Number is invalid")
        }
-       return age;
+       return number;
      }
 
      try{
         console.log('entering try for step 4');  
-        let age = checkAge();
+        let firstNum = document.querySelector('#first-num').value;
+        checkNumber(firstNum);
+        let secondNum = document.querySelector('#second-num').value;
+        checkNumber(secondNum);
         if(err instanceof SillyError){
           console.log("You made a silly error: " + err.message)
         }
