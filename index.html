@@ -218,15 +218,17 @@
 
      try{
         console.log('entering try for step 4');  
-        let firstNum = document.querySelector('#first-num').value;
-        checkNumber(firstNum);
-        let secondNum = document.querySelector('#second-num').value;
-        checkNumber(secondNum);
+        let age = '2a';
+        console.log('Age: ' + age);
+        if(!Number(age)){
+          throw new SillyError("Age is invalid")
+        }
+        
+     }catch(err){
+        console.log('error was caught: ')
         if(err instanceof SillyError){
           console.log("You made a silly error: " + err.message)
         }
-     }catch(err){
-        console.log('error was caught: ' + err)
      }finally{
        console.log('finally')
      }
